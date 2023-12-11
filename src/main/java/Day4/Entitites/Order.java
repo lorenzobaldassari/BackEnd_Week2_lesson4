@@ -3,6 +3,7 @@ package Day4.Entitites;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Order {
     private Long id;
@@ -70,6 +71,10 @@ public class Order {
 
     public void setProdutcs(List<Product> produtcs) {
         this.produtcs = produtcs;
+    }
+
+    public double getTotal(){
+        return this.produtcs.stream().collect(Collectors.summingDouble(a->a.getPrice()));
     }
 
     @Override
